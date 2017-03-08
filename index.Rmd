@@ -1,7 +1,3 @@
----
-title: "Welliton Souza"
----
-
 # Software packages
 
 - [Rqc](http://bioconductor.org/packages/Rqc/) is an optimised tool designed for
