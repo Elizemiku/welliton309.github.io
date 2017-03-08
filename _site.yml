@@ -1,0 +1,9 @@
+name: "Welliton Souza"
+output_dir: "."
+navbar:
+  title: "Welliton Souza"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
