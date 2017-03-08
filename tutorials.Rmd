@@ -1,0 +1,7 @@
+---
+title: "Tutorials"
+---
+
+# Linux
+
+- [Things to do after installing Ubuntu Linux for Bioinformatics](tutorials/linux_bioinformatics.html)

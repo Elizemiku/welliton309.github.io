@@ -1,0 +1,199 @@
+---
+title: "Things to do after installing Ubuntu Linux for Bioinformatics"
+author: "Welliton Souza"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+This tutorial is focused on my toolbox for working with genomic data. I manly use R statistical software and Bioconductor packages. It may not fit for everyone.
+
+I tested these commands in Ubuntu Linux version 16.04 LTS 64 bits. Some commands may not work with old versions of Ubuntu.
+
+`Ctrl + Alt + T` opens Terminal.
+
+## 1. Update your system
+
+```{bash}
+sudo apt-get update
+sudo apt-get upgrade -y
+```
+
+Reboot your system if necessary.
+
+```{bash}
+sudo reboot
+```
+
+## 2. Install version control systems
+
+[Git](https://git-scm.com/). [Reference](https://git-scm.com/download/linux). Git is necessary for working with [GitHub](https://github.com/).
+
+```{bash}
+sudo apt-get install git -y
+```
+
+[Apache Subversion](https://subversion.apache.org/). [Reference](https://subversion.apache.org/packages.html#ubuntu)
+
+```{bash}
+sudo apt-get install subversion libapache2-svn -y
+```
+
+## 3. Install missing command line tools
+
+Install vim.
+
+```{bash}
+sudo apt-get install vim -y
+```
+
+Install htop.
+
+```{bash}
+sudo apt-get install htop -y
+```
+
+Install screen.
+
+```{bash}
+sudo apt install screen -y
+```
+
+## 4. Install R and RStudio
+
+First check what is the codename of your Ubuntu installation. [Reference](https://help.ubuntu.com/community/CheckingYourUbuntuVersion).
+
+```{bash}
+lsb_release -c
+```
+
+[Here](https://wiki.ubuntu.com/DevelopmentCodeNames) is a list of Ubuntu versions and their codenames.
+
+Edit, as superuser, `/etc/apt/sources.list` file adding the lines below at the end of text. There are many [mirrors](http://cran.r-project.org/mirrors.html) available.
+
+```
+# R repositories - lasted package versions
+deb https://cloud.r-project.org/bin/linux/ubuntu/ xenial/
+```
+
+Add a verified key.
+
+```{bash}
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+```
+
+Update your system package manager. Install R and its system dependencies.
+
+```{bash}
+sudo apt-get update
+sudo apt-get install r-base-dev -y
+```
+
+Install common system packages dependencies for R.
+
+```{bash}
+sudo apt-get install libcurl4-openssl-dev ghostscript libxml2-dev libssl-dev -y
+```
+
+Install [RStudio desktop](https://www.rstudio.com/products/rstudio/#Desktop) version. Also, there is a [server version](https://www.rstudio.com/products/rstudio/#Server). There are installation files for different Linux distributions and versions, [see more](https://www.rstudio.com/products/rstudio/download3/).
+
+```{bash}
+wget https://download1.rstudio.org/rstudio-1.0.44-amd64.deb -O /tmp/rstudio.deb
+sudo dpkg -i /tmp/rstudio.deb
+```
+
+If installation of RStudio fail, run the command line below. It will install missing system package dependencies.
+
+```{bash}
+sudo apt-get -f install -y
+```
+
+## 5. Install Bioconductor core packages
+
+Install [Bioconductor](http://bioconductor.org/), on R. This will install the base packages. [Reference](http://bioconductor.org/install/).
+
+```{r}
+source("https://bioconductor.org/biocLite.R")
+biocLite()
+```
+
+Install [tidyverse](https://github.com/tidyverse/tidyverse) package (from RStudio). This will install a bundle of useful package for manipulating general data on R. Below a list of (some) packages that will be installed.
+
+- [ggplot2](http://ggplot2.org/) for data visualisation.
+- [dplyr](https://github.com/hadley/dplyr) for data manipulation.
+- [tidyr](https://github.com/hadley/tidyr) for data tidying.
+- [readr](https://github.com/tidyverse/readr) for data import.
+- [purrr](https://github.com/hadley/purrr) for functional programming.
+- [tibble](https://github.com/tidyverse/tibble) for tibbles, a modern re-imagining of data frames.
+
+**NOTE:** it is safer using `biocLite` function from `BiocInstaller` package instead of `install.packages` function. 
+
+```{r}
+library(BiocInstaller)
+biocLite("tidyverse")
+```
+
+
+## 6. Install authoring tools
+
+Install RMarkdown for working with markdown. It is possible to generate HTML, DOCX and PDF (PDF requires LaTeX).
+
+```{r}
+biocLite("rmarkdown")
+```
+
+Install LaTeX for generating PDF.
+
+```{bash}
+sudo apt-get install texlive texlive-latex-extra texlive-fonts-extra texinfo -y
+```
+
+## 7. Install package devlopment tools
+
+Install commpilers and system dependencies.
+
+```{bash}
+sudo apt-get install build-essential gfortran libreadline6-dev libcurl4-gnutls-dev libpcre3-dev libbz2-dev xorg-dev
+```
+
+Install package development tools.
+
+- [devtools](https://github.com/hadley/devtools).
+- [roxygen2](https://github.com/klutometis/roxygen).
+- [testthat](https://github.com/hadley/testthat).
+- [BiocCheck](http://bioconductor.org/packages/release/bioc/html/BiocCheck.html).
+
+```{r}
+biocLite(c("devtools", "roxygen2", "testthat", "BiocCheck"))
+```
+
+## 8. Install Microsoft Windows fonts
+
+[Reference](https://help.ubuntu.com/community/RestrictedFormats/Microsoft_Fonts).
+
+```{bash}
+sudo apt-get install ttf-mscorefonts-installer -y
+sudo fc-cache -f -v
+```
+
+## 9. Swappiness
+
+By default, this command will return 60.
+
+```{bash}
+cat /proc/sys/vm/swappiness
+```
+
+Edit, as superuser, `/etc/sysctl.conf` file addin the line below at the end of the text.
+
+```
+vm.swappiness = 10
+```
+
+Reboot computer.
