@@ -7,4 +7,4 @@ of high-resolution graphics.
 - [GA4GHclient](https://github.com/labbcb/GA4GHclient) provides an easy way to
 access public data servers through Global Alliance for Genomics and Health
 (GA4GH) Genomics API. This package also provides an interactive web application.
-<a href="GA4GHclient/index.html" target="_blank">Documentation</a>.
+<a href="ga4ghclient/index.html" target="_blank">Documentation</a>.
