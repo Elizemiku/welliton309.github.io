@@ -16,7 +16,7 @@ This tutorial is focused on my toolbox for working with genomic data. I manly us
 
 I tested these commands in Ubuntu Linux version 16.04 LTS 64 bits. Some commands may not work with old versions of Ubuntu.
 
-`Ctrl + Alt + T` opens Terminal.
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> opens the Terminal.
 
 ## 1. Update your system
 
@@ -33,13 +33,15 @@ sudo reboot
 
 ## 2. Install version control systems
 
-[Git](https://git-scm.com/). [Reference](https://git-scm.com/download/linux). Git is necessary for working with [GitHub](https://github.com/).
+[Git](https://git-scm.com/). [Reference](https://git-scm.com/download/linux).
+Git is necessary for working with [GitHub](https://github.com/).
 
 ```{bash}
 sudo apt-get install git -y
 ```
 
-[Apache Subversion](https://subversion.apache.org/). [Reference](https://subversion.apache.org/packages.html#ubuntu)
+[Apache Subversion](https://subversion.apache.org/).
+[Reference](https://subversion.apache.org/packages.html#ubuntu)
 
 ```{bash}
 sudo apt-get install subversion libapache2-svn -y
