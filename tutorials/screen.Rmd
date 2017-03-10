@@ -8,7 +8,7 @@ output:
     toc_float: true
 ---
 
-GNU Screen is a great software to execute programs in background and it is fundamental for remote access (SSH).
+GNU Screen is a great software to execute programs in background and it is fundamental for remote access (SSH). Do not have the `screen` installed? See <a href="linux_bioinformatics.html#3_install_missing_command_line_tools" target="_blank">Install missing command line tools</a> tutorial.
 
 # Basic
 
