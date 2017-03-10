@@ -1,0 +1,71 @@
+---
+title: "GNU Screen"
+author: "Welliton Souza"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_float: true
+---
+
+GNU Screen is a great software to execute programs in background and it is fundamental for remote access (SSH).
+
+# Basic
+
+Start screen program.
+
+    screen
+
+Exit from program.
+
+    exit
+
+Detach session. The program will stay running in the background.
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>D</kbd>
+
+Take back the detached session.
+
+    screen -r
+
+Start session with a custom name. It is useful when working with many sessions.
+
+    screen -S name
+
+Take back the detached session by its name.
+
+    screen -r name
+
+# Intermediary
+
+Scroll the screen
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>ESC</kbd>. Use <kbd>UP</kbd> arrow to scroll.
+
+Open new terminal inside the session.
+
+<kbd>CTRL</kbd>+<kbd>A<kbd> then <kbd>C</kbd>
+
+Navigate through virtual terminals.
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>N</kbd> or <kbd>CTRL</kbd>+<kbd>A</kbd> then </kbd>P<kbd>
+
+Split the screen vertically.
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>|</kbd>
+
+Mover the cursor between the splitted screen.
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>TAB</kbd>
+
+Copy text:
+
+1. <kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>[</kbd>
+2. Mova o cursor até o primeiro caractere desejado para copiar
+3. `SPACE`
+4. Mova o cursor até o último caractere desejado para copiar (o texto que será copiado fica marcado)
+5. <kbd>SPACE</kbd>
+
+Paste text:
+
+<kbd>CTRL</kbd>+<kbd>A</kbd> then <kbd>]</kbd>
