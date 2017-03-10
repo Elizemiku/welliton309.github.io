@@ -61,11 +61,13 @@ Install htop.
 sudo apt-get install htop -y
 ```
 
-Install screen.
+Install GNU Screen.
 
 ```{bash}
 sudo apt install screen -y
 ```
+
+Learn how to use `screen` <a href="screen.html" target="_blank">here</a>.
 
 ## 4. Install R and RStudio
 
