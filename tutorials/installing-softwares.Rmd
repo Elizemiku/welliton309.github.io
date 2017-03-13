@@ -32,7 +32,7 @@ https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html
 ```{bash}
 cd ~
 wget https://people.maths.bris.ac.uk/~madjl/finestructure/fs-2.1.1.tar.gz
-tar xzvf fs-2.1.tar.gz 
+tar xzvf fs-2.1.1.tar.gz
 cd fs-2.1/
 ./configure
 make
