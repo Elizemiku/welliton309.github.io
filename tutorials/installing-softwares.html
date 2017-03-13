@@ -228,7 +228,7 @@ div.tocify {
 <p><a href="https://www.cog-genomics.org/plink2" class="uri">https://www.cog-genomics.org/plink2</a></p>
 <pre class="bash"><code>cd ~
 wget https://www.cog-genomics.org/static/bin/plink170310/plink_linux_x86_64.zip
-uzinp plink_linux_x86_64.zip -d plink
+unzip plink_linux_x86_64.zip -d plink
 sudo cp -r plink /opt
 sudo ln -s /opt/plink/plink /usr/local/bin/
 plink --version</code></pre>
@@ -237,7 +237,7 @@ plink --version</code></pre>
 <h1>fineSTRUCTURE v2</h1>
 <p><a href="https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html" class="uri">https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html</a></p>
 <pre class="bash"><code>cd ~
-wget https://people.maths.bris.ac.uk/~madjl/finestructure/fs-2.1.tar.gz
+wget https://people.maths.bris.ac.uk/~madjl/finestructure/fs-2.1.1.tar.gz
 tar xzvf fs-2.1.tar.gz 
 cd fs-2.1/
 ./configure
@@ -248,7 +248,8 @@ fs --version</code></pre>
 <div id="admixture" class="section level1">
 <h1>ADMIXTURE</h1>
 <p><a href="https://www.genetics.ucla.edu/software/admixture/download.html" class="uri">https://www.genetics.ucla.edu/software/admixture/download.html</a></p>
-<pre class="bash"><code>wget https://www.genetics.ucla.edu/software/admixture/binaries/admixture_linux-1.3.tar.gz
+<pre class="bash"><code>cd ~
+wget https://www.genetics.ucla.edu/software/admixture/binaries/admixture_linux-1.3.tar.gz
 tar xzvf admixture_linux-1.3.tar.gz
 sudo cp -r admixture_linux-1.3 /opt
 sudo ln -s /opt/admixture_linux-1.3/admixture /usr/local/bin/
