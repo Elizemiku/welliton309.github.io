@@ -4,3 +4,4 @@
 
 - <a href="tutorials/linux_bioinformatics.html" target="_blank">Things to do after installing Ubuntu Linux for Bioinformatics</a>.
 - <a href="tutorials/screen.html" target="_blank">GNU Screen</a>.
+- <a href="tutorials/installing-softwares.html" target="_blank">Installing bioinformatics softwares</a>.

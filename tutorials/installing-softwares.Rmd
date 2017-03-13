@@ -1,0 +1,52 @@
+---
+title: "Installing bioinformatics softwares"
+author: "Welliton Souza"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+Some softwares may need additional steps to install. This is a collections of recipes for installing bioinformatics softwares. It helps us to quickly install these softwares.
+
+# PLINK 1.9
+https://www.cog-genomics.org/plink2
+
+```{bash}
+cd ~
+wget https://www.cog-genomics.org/static/bin/plink170310/plink_linux_x86_64.zip
+uzinp plink_linux_x86_64.zip -d plink
+sudo cp -r plink /opt
+sudo ln -s /opt/plink/plink /usr/local/bin/
+plink --version
+```
+
+# fineSTRUCTURE v2
+https://people.maths.bris.ac.uk/~madjl/finestructure/finestructure.html
+
+```{bash}
+cd ~
+wget https://people.maths.bris.ac.uk/~madjl/finestructure/fs-2.1.tar.gz
+tar xzvf fs-2.1.tar.gz 
+cd fs-2.1/
+./configure
+make
+sudo make install
+fs --version
+```
+
+# ADMIXTURE
+https://www.genetics.ucla.edu/software/admixture/download.html
+
+```{bash}
+wget https://www.genetics.ucla.edu/software/admixture/binaries/admixture_linux-1.3.tar.gz
+tar xzvf admixture_linux-1.3.tar.gz
+sudo cp -r admixture_linux-1.3 /opt
+sudo ln -s /opt/admixture_linux-1.3/admixture /usr/local/bin/
+admixture --version
+```
