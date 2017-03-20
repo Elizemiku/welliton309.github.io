@@ -1,6 +1,6 @@
 ---
-title: "Reproducible report template"
-author: "Welliton Souza <well309@gmail.com>"
+title: "Report template"
+author: "Welliton Souza"
 date: "`r Sys.Date()`"
 bibliography: "bibliography.bib"
 output:
@@ -10,6 +10,9 @@ output:
     code_folding: hide
     df_print: kable
 ---
+
+See the [source file](report-template.Rmd) to see the hidden configurations and
+code chunks.
 
 # Explaning configurations
 
@@ -25,7 +28,7 @@ output:
 
 # Citing R and Bioconductor package
 
-Add this code chunk before citing package.
+Add this code chunk before citing a package.
 
 ```{r bioc, include=FALSE}
 library(BiocStyle)
