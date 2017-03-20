@@ -1,0 +1,59 @@
+---
+title: "Reproducible report template"
+author: "Welliton Souza <well309@gmail.com>"
+date: "`r Sys.Date()`"
+bibliography: "bibliography.bib"
+output:
+  html_document:
+    toc: yes
+    toc_float: true
+    code_folding: hide
+    df_print: kable
+---
+
+# Explaning configurations
+
+- `title` will appear at the top of document;
+- `author` the name(s) of author(s);
+- `date` keep date of the last compilation;
+- `bibliography` path BibTeX file;
+- `html_document` generates HTML file;
+- `toc` create Table of Contents;
+- `toc_float` create froating toc (right side);
+- `code_folding` hide R codes and add button to show the code;
+- `df_print` use `kable` (from knitr package) to print `data.frame` objects.
+
+# Citing R and Bioconductor package
+
+Add this code chunk before citing package.
+
+```{r bioc, include=FALSE}
+library(BiocStyle)
+```
+
+Cite Bioconductor using inline R code, example `r Biocpkg("Rqc")`.
+The same for CRAN packages, example: `r CRANpkg("ggplot2")`.
+Or packages from GitHub: `r Githubpkg("labbcb/GA4GHclient")`.
+
+# Citing articles
+
+Append BibTex entries to `bibliography.bib` file.
+Cite aticles like LaTeX, example: @Wickham2014 or [@Wickham2014].
+References will appear ate the end of the document.
+
+# Session info
+
+Print session info
+
+From devtools package.
+
+```{r sessioninfo-devtools}
+devtools::session_info()
+```
+
+From base package
+```{r sessioninfo-base}
+sessionInfo()
+```
+
+# References
