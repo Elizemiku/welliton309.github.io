@@ -12,8 +12,8 @@ output:
 # names to differenciate data from TSV files (e.g. serve1, server2)
 # Do not remove the brackets. Use commas as separator.
 params:
-  files: [file1.tsv, file2.tsv]
-  names: [file1, file2]
+  files: [~/data_home.tsv]
+  names: [file1]
 ---
 
 # Listing files via bash
@@ -63,8 +63,9 @@ sortBySize <- function(total.ext)
 }
 plotByName <- function(total.ext, name)
 {
-    total.ext.name <- subsetByName(total.ext, name)
-    ggplot(total.ext.name, aes(x=reorder(ext, -size.total.gb), y=size.total.gb)) + 
+    subsetByName(total.ext, name) %>%
+        filter(size.total.gb >= 1) %>%
+        ggplot(aes(x=reorder(ext, -size.total.gb), y=size.total.gb)) + 
         geom_bar(stat="identity")
 }
 subsetFilesByName <- function(data, name)
@@ -112,7 +113,7 @@ tagList(lapply(params$names, function(name) {
         list(h2(name),
         h3("Total file size (GB)"),
         datatable(sortBySize(subsetByName(total.ext, name))),
-        h3("Plot of total file size"),
+        h3("Plot of total file size by extension (>= 1GB"),
         ggplotly(plotByName(total.ext, name)),
         h3("Table containing all files with more than 1 GB"),
         datatable(subsetFilesByName(data, name)))
