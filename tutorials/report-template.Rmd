@@ -1,13 +1,13 @@
 ---
 title: "Report template"
-author: "Welliton Souza"
+author: "Welliton Souza, Elizabeth Borgognoni"
 date: "`r Sys.Date()`"
 bibliography: "bibliography.bib"
 output:
   html_document:
     toc: yes
     toc_float: true
-    code_folding: hide
+    code_folding: show
     df_print: kable
 ---
 
@@ -23,7 +23,7 @@ code chunks.
 - `html_document` generates HTML file;
 - `toc` create Table of Contents;
 - `toc_float` create froating toc (right side);
-- `code_folding` hide R codes and add button to show the code;
+- `code_folding` Replace `show` to `hide` to hide R codes and add button to show the code.
 - `df_print` use `kable` (from knitr package) to print `data.frame` objects.
 
 # Citing R and Bioconductor package
@@ -44,9 +44,50 @@ Append BibTex entries to `bibliography.bib` file.
 Cite aticles like LaTeX, example: @Wickham2014 or [@Wickham2014].
 References will appear ate the end of the document.
 
-# Session info
+# Interactive tables 
+```{r}
+library(DT)
+datatable(mtcars, options = list(scrollX = TRUE))
+```
 
-Print session info
+`options = list(scrollX = TRUE)` parameter limits the table by the width of the report area.
+
+# Interactive plots
+
+Select only gear and hp variables.
+
+```{r, message=FALSE}
+library(dplyr)
+mtcars_tidy <- select(mtcars, gear, hp) %>%
+    mutate(gear = as.factor(gear))
+```
+
+
+Plot using `r CRANpkg("ggplot2")` plus `r CRANpkg("plotly")`.
+
+```{r, message=FALSE}
+library(ggplot2)
+library(plotly)
+
+# Plot using ggplot2 
+p <- ggplot(mtcars_tidy, aes(x = gear, y = hp)) +
+        geom_boxplot() +
+        labs(x = "Number of gears", y = "Horse power") +
+        ggtitle("Distribution of horse power by gears")
+
+# Add interactivity using plotly
+ggplotly(p)
+```
+
+Plot using only plotly package.
+
+```{r}
+plot_ly(mtcars_tidy, x = ~gear, y = ~hp, type = "box") %>% 
+    layout(title = "Distribution of horse power by gears",
+           xaxis = list(title = "Number of gears"), yaxis = list(title = "Horse power" ))
+```
+
+# Session info
 
 From devtools package.
 
